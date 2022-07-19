@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package question;
+
+service QuestionService {
+    rpc FindOne (QuestionId) returns (Question) {};
+    rpc CheckAnswer (Answer) returns (bool) {};
+}
+
+message QuestionId {
+    string id = 1;
+}
+
+message bool {
+    bool isRight = 1;
+}
+message Question {
+    string id = 1;
+    int32 answer = 2;
+    string option1 = 3;
+    string option2 = 4;
+    string option3 = 5;
+    string option4 = 6;
+    string content =7;
+    string quiz = 8;
+}
+
+message Answer {
+    string questionId = 1;
+    int32 answer = 2;
+}

@@ -10,12 +10,13 @@ async function bootstrap() {
     {
       transport: Transport.GRPC,
       options: {
-        package: 'User',
-        protoPath: join(__dirname, 'user/proto/user.proto'),
-        url: 'localhost:54321',
+        package: 'question',
+        protoPath: join(__dirname, '../src/question.proto'),
+        url: 'localhost:' + process.env.GRPC_PORT,
       },
     },
   );
-  app.startAllMicroservices();
+
+  await app.listen().then(() => console.log('Microservice is listening'));
 }
 bootstrap();
